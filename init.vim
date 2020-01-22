@@ -74,6 +74,9 @@ nnoremap <leader>d :LspDefinition<cr>
 " New completion framework
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 " Connecting language protocol server with completion framework
 Plug 'ncm2/ncm2-vim-lsp'
 " Function parameter expansion support
@@ -87,11 +90,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 " suppress the annoying 'match x of y', 'The only match' and 'Pattern not found' messages
 set shortmess+=cI
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
 " Use this mapping to close the menu and also start a new line
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 let g:python3_host_prog="/usr/local/bin/python3"
 " completion sources
 Plug 'ncm2/ncm2-bufword'
